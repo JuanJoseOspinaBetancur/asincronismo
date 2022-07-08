@@ -20,7 +20,7 @@ function fetchData(urlApi, callback) {
         callback(null, JSON.parse(xhttp.responseText));
       }
     } else {
-      const error = new Error("Error mi perro" + urlApi);
+      const error = new Error("Error" + urlApi);
       return callback(error, null);
     }
   };
@@ -33,12 +33,12 @@ fetchData(`${API}/products`, function (error1, data1) {
   fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
     if (error2) return console.error(error2);
     fetchData(
-      `${API}/categories/${data2?.categories?.id}`,
+      `${API}/categories/${data2?.category?.id}`,
       function (error3, data3) {
         if (error3) return console.error(error3);
-        console.log(data1[0]);
-        console.log(data2.title);
-        console.log(data3.name);
+        console.log("1",data1[0]);
+        console.log("2",data2.title);
+        console.log("3",data3.name);
       }
     );
   });
